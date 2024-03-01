@@ -1,0 +1,54 @@
+{
+	"schemaVersion": 1,
+	"id": "tbd",
+	"version": "${version}",
+	"name": "tbd",
+	"description": "This is a mod created by Ronnie Gould",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/tbd/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "com.ronnie.Tbd",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "com.ronnie.TbdClient",
+				"adapter": "kotlin"
+			}
+		],
+		"fabric-datagen": [
+			{
+				"value": "com.ronnie.TbdDataGenerator",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"tbd.mixins.json",
+		{
+			"config": "tbd.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*",
+		"fabric-language-kotlin": ">=1.9.22"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
