@@ -14,5 +14,6 @@ object  TbdRegisterItems {
 
     fun registerItems() {
         registerItem(IceSword.name, IceSword.item)
+        registerItem(SpeedBoots.name, SpeedBoots.item)
     }
 }
