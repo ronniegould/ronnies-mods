@@ -5,11 +5,18 @@ import net.minecraft.item.ArmorItem
 import net.minecraft.item.Item
 
 
-object SpeedBoots {
+object SpeedArmour {
     const val name = "speed_boots"
     val item = SpeedArmorItem(
         SpeedArmorMaterial(),
         ArmorItem.Type.BOOTS,
+        Item.Settings().fireproof()
+    )
+
+    const val legsName = "speed_leggings"
+    val legsItem = SpeedArmorItem(
+        SpeedArmorMaterial(),
+        ArmorItem.Type.LEGGINGS,
         Item.Settings().fireproof()
     )
 }
