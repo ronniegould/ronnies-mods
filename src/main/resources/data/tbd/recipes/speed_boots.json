@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SNS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:soul_soil"
+    },
+    "N": {
+      "item": "minecraft:netherite_boots"
+    }
+  },
+  "result": {
+    "item": "tbd:speed_boots",
+    "count": 1
+  }
+}
