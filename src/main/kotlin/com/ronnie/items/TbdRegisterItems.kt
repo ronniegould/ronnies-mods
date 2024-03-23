@@ -16,5 +16,7 @@ object  TbdRegisterItems {
         registerItem(IceSword.name, IceSword.item)
         registerItem(SpeedArmour.name, SpeedArmour.item)
         registerItem(SpeedArmour.legsName, SpeedArmour.legsItem)
+        registerItem(SpeedArmour.chestName, SpeedArmour.chestItem)
+        registerItem(SpeedArmour.helmetName, SpeedArmour.helmetItem)
     }
 }

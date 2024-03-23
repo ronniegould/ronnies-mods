@@ -50,7 +50,60 @@ class SpeedArmorItem(speedArmorMaterial: SpeedArmorMaterial, boots: Type, firepr
                 }
             }
         }
+
+        if (hasChestOn(player)) {
+            if (hasCorrectChestOn(armourMaterial, player)) {
+                val hasPlayerEffect = player.hasStatusEffect(StatusEffects.SATURATION)
+                if (!hasPlayerEffect) {
+                    player.addStatusEffect(
+                        StatusEffectInstance(
+                            StatusEffects.SATURATION,
+                            9000, 1
+                        )
+                    )
+                }
+            }
+        }
+
+        if (hasHelmetOn(player)) {
+            if (hasCorrectHelmetOn(armourMaterial, player)) {
+                val hasPlayerEffect = player.hasStatusEffect(StatusEffects.DOLPHINS_GRACE)
+                if (!hasPlayerEffect) {
+                    player.addStatusEffect(
+                        StatusEffectInstance(
+                            StatusEffects.DOLPHINS_GRACE,
+                            9000, 10
+                        )
+                    )
+                }
+            }
+        }
     }
+
+    private fun hasChestOn(player: PlayerEntity): Boolean {
+        val chest = player.inventory.getArmorStack(2)
+        return !chest.isEmpty
+    }
+    private fun hasCorrectChestOn(material: ArmorMaterial, player: PlayerEntity): Boolean {
+        val item = player.inventory.getArmorStack(2).item
+        if (item is ArmorItem) {
+            return item.material.name === material.name
+        }
+        return false
+    }
+
+    private fun hasHelmetOn(player: PlayerEntity): Boolean {
+        val helmet = player.inventory.getArmorStack(3)
+        return !helmet.isEmpty
+    }
+    private fun hasCorrectHelmetOn(material: ArmorMaterial, player: PlayerEntity): Boolean {
+        val item = player.inventory.getArmorStack(3).item
+        if (item is ArmorItem) {
+            return item.material.name === material.name
+        }
+        return false
+    }
+
     private fun hasBootsOn(player: PlayerEntity): Boolean {
         val boots = player.inventory.getArmorStack(0)
         return !boots.isEmpty

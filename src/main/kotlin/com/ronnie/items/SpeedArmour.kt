@@ -19,5 +19,19 @@ object SpeedArmour {
         ArmorItem.Type.LEGGINGS,
         Item.Settings().fireproof()
     )
+
+    const val chestName = "speed_chest"
+    val chestItem = SpeedArmorItem(
+        SpeedArmorMaterial(),
+        ArmorItem.Type.CHESTPLATE,
+        Item.Settings().fireproof()
+    )
+
+    const val helmetName = "speed_helmet"
+    val helmetItem = SpeedArmorItem(
+        SpeedArmorMaterial(),
+        ArmorItem.Type.HELMET,
+        Item.Settings().fireproof()
+    )
 }
 
