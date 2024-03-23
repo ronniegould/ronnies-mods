@@ -78,6 +78,8 @@ class SpeedArmorItem(speedArmorMaterial: SpeedArmorMaterial, boots: Type, firepr
                 }
             }
         }
+
+        // Add a full set effect
     }
 
     private fun hasChestOn(player: PlayerEntity): Boolean {
