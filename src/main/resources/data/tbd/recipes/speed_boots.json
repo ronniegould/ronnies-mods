@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SSS",
-    "SNS",
-    "SSS"
+    "RRR",
+    "RNR",
+    "RRR"
   ],
   "key": {
-    "S": {
-      "item": "minecraft:soul_soil"
+    "R": {
+      "item": "minecraft:rabbit_foot"
     },
     "N": {
       "item": "minecraft:netherite_boots"

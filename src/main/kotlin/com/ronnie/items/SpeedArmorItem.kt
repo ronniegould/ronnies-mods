@@ -1,6 +1,7 @@
 package com.ronnie.items
 
 import com.ronnie.armor.SpeedArmorMaterial
+import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.Entity
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
@@ -8,10 +9,16 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ArmorItem
 import net.minecraft.item.ArmorMaterial
 import net.minecraft.item.ItemStack
+import net.minecraft.text.Text
 import net.minecraft.world.World
 
 
-class SpeedArmorItem(speedArmorMaterial: SpeedArmorMaterial, boots: Type, fireproof: Settings) : ArmorItem(speedArmorMaterial, boots, fireproof) {
+class SpeedArmorItem(
+    speedArmorMaterial: SpeedArmorMaterial,
+    boots: Type,
+    fireproof: Settings,
+    private val tooltip: Text
+    ) : ArmorItem(speedArmorMaterial, boots, fireproof) {
     override fun inventoryTick(stack: ItemStack?, world: World, entity: Entity?, slot: Int, selected: Boolean) {
         if (!world.isClient()) {
             if (entity is PlayerEntity) {
@@ -19,6 +26,16 @@ class SpeedArmorItem(speedArmorMaterial: SpeedArmorMaterial, boots: Type, firepr
             }
         }
         super.inventoryTick(stack, world, entity, slot, selected)
+    }
+
+    override fun appendTooltip(
+        stack: ItemStack?,
+        world: World?,
+        tooltip: MutableList<Text>?,
+        context: TooltipContext?
+    ) {
+        tooltip?.add(this.tooltip);
+        super.appendTooltip(stack, world, tooltip, context)
     }
 
     private fun evaluateArmorEffects(player: PlayerEntity) {
@@ -80,6 +97,28 @@ class SpeedArmorItem(speedArmorMaterial: SpeedArmorMaterial, boots: Type, firepr
         }
 
         // Add a full set effect
+        if (hasFullArmourOn(player)) {
+            if (hasCorrectFullArmourOn(armourMaterial, player)) {
+                val hasPlayerStatusEffect = player.hasStatusEffect(StatusEffects.REGENERATION)
+                if (!hasPlayerStatusEffect) {
+                    player.addStatusEffect(StatusEffectInstance(
+                        StatusEffects.REGENERATION, 9000, 10
+                    ))
+                }
+            }
+        }
+
+    }
+
+    private fun hasFullArmourOn(player: PlayerEntity): Boolean {
+        return hasHelmetOn(player) && hasChestOn(player) && hasLegsOn(player) && hasBootsOn(player)
+    }
+
+    private fun hasCorrectFullArmourOn(material: ArmorMaterial, player: PlayerEntity): Boolean {
+        return hasCorrectChestOn(material, player) && hasCorrectHelmetOn(material, player) && hasCorrectLegsOn(
+            material,
+            player
+        ) && hasCorrectBootsOn(material, player)
     }
 
     private fun hasChestOn(player: PlayerEntity): Boolean {

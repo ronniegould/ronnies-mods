@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SSS",
-    "SNS",
-    "SSS"
+    "BBB",
+    "BNB",
+    "BBB"
   ],
   "key": {
-    "S": {
-      "item": "minecraft:soul_soil"
+    "B": {
+      "item": "minecraft:enchanted_book"
     },
     "N": {
       "item": "minecraft:netherite_leggings"
