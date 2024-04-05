@@ -1,8 +1,13 @@
 package com.ronnie.items
 
+import com.google.common.collect.Multimap
 import com.ronnie.armor.SpeedArmorMaterial
 import net.minecraft.client.item.TooltipContext
+import net.minecraft.enchantment.Enchantments
 import net.minecraft.entity.Entity
+import net.minecraft.entity.EquipmentSlot
+import net.minecraft.entity.attribute.EntityAttribute
+import net.minecraft.entity.attribute.EntityAttributeModifier
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.player.PlayerEntity
@@ -11,7 +16,6 @@ import net.minecraft.item.ArmorMaterial
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
 import net.minecraft.world.World
-
 
 class SpeedArmorItem(
     speedArmorMaterial: SpeedArmorMaterial,
@@ -26,6 +30,17 @@ class SpeedArmorItem(
             }
         }
         super.inventoryTick(stack, world, entity, slot, selected)
+    }
+
+    override fun getAttributeModifiers(
+        stack: ItemStack?,
+        slot: EquipmentSlot?
+    ): Multimap<EntityAttribute, EntityAttributeModifier> {
+        if (stack?.hasEnchantments() == true) return super.getAttributeModifiers(stack, slot)
+
+        stack?.addEnchantment(Enchantments.AQUA_AFFINITY, 2)
+
+        return super.getAttributeModifiers(stack, slot)
     }
 
     override fun appendTooltip(
