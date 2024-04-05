@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SSS",
-    "SNS",
-    "SSS"
+    "CCC",
+    "CNC",
+    "CCC"
   ],
   "key": {
-    "S": {
-      "item": "minecraft:soul_soil"
+    "C": {
+      "item": "minecraft:conduit"
     },
     "N": {
       "item": "minecraft:netherite_helmet"

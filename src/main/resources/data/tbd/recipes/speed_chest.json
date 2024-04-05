@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SSS",
-    "SNS",
-    "SSS"
+    "AAA",
+    "ANA",
+    "AAA"
   ],
   "key": {
-    "S": {
-      "item": "minecraft:soul_soil"
+    "A": {
+      "item": "minecraft:enchanted_golden_apple"
     },
     "N": {
       "item": "minecraft:netherite_chestplate"
