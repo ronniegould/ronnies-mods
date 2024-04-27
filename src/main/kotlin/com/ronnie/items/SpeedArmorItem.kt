@@ -38,7 +38,8 @@ class SpeedArmorItem(
     ): Multimap<EntityAttribute, EntityAttributeModifier> {
         if (stack?.hasEnchantments() == true) return super.getAttributeModifiers(stack, slot)
 
-        stack?.addEnchantment(Enchantments.AQUA_AFFINITY, 2)
+        stack?.addEnchantment(Enchantments.AQUA_AFFINITY, 5)
+        stack?.addEnchantment(Enchantments.FEATHER_FALLING, 5)
 
         return super.getAttributeModifiers(stack, slot)
     }
@@ -52,6 +53,7 @@ class SpeedArmorItem(
         tooltip?.add(this.tooltip);
         super.appendTooltip(stack, world, tooltip, context)
     }
+
 
     private fun evaluateArmorEffects(player: PlayerEntity) {
         val armourMaterial = SpeedArmorMaterial()

@@ -9,6 +9,9 @@ import net.minecraft.util.Identifier
 
 object  TbdRegisterItems {
     lateinit var helmet: Item
+    lateinit var chest: Item
+    lateinit var leggings: Item
+    lateinit var boots: Item
 
     private fun registerItem(name: String, item: Item): Item {
         return Registry.register(Registries.ITEM, Identifier(Tbd.MOD_ID, name), item)
@@ -16,9 +19,9 @@ object  TbdRegisterItems {
 
     fun registerItems() {
         registerItem(IceSword.name, IceSword.item)
-        registerItem(SpeedArmour.name, SpeedArmour.item)
-        registerItem(SpeedArmour.legsName, SpeedArmour.legsItem)
-        registerItem(SpeedArmour.chestName, SpeedArmour.chestItem)
+        boots = registerItem(SpeedArmour.name, SpeedArmour.item)
+        leggings = registerItem(SpeedArmour.legsName, SpeedArmour.legsItem)
+        chest = registerItem(SpeedArmour.chestName, SpeedArmour.chestItem)
         helmet = registerItem(SpeedArmour.helmetName, SpeedArmour.helmetItem)
     }
 }

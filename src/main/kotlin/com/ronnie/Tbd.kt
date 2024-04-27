@@ -21,6 +21,9 @@ object Tbd : ModInitializer {
 	val LOGGER: Logger = LogManager.getLogger(MOD_ID)
 
 	private val STRONGHOLD_LIBRARY_CHEST_LOOT_TABLE_ID = Identifier("minecraft", "chests/stronghold_library")
+	private val END_CITY_TREASURE_CHEST_LOOT_TABLE_ID = Identifier("minecraft", "chests/end_city_treasure")
+	private val BASTION_TREASURE_CHEST_LOOT_TABLE_ID = Identifier("minecraft", "chests/bastion_treasure")
+	private val DESERT_PYRAMID_CHEST_LOOT_TABLE_ID = Identifier("minecraft", "chests/desert_pyramid")
 
 	override fun onInitialize() {
 		TbdPotions.registerPotions()
@@ -32,10 +35,24 @@ object Tbd : ModInitializer {
 			if (STRONGHOLD_LIBRARY_CHEST_LOOT_TABLE_ID == id) {
 				val pool: LootPool.Builder = LootPool.builder()
 					.with(ItemEntry.builder(TbdRegisterItems.helmet))
-
-				// Add the loot pool to the loot table
 				tableBuilder.pool(pool)
 			}
+			if (END_CITY_TREASURE_CHEST_LOOT_TABLE_ID == id) {
+				val pool: LootPool.Builder = LootPool.builder()
+					.with(ItemEntry.builder(TbdRegisterItems.chest))
+				tableBuilder.pool(pool)
+			}
+			if (BASTION_TREASURE_CHEST_LOOT_TABLE_ID == id) {
+				val pool: LootPool.Builder = LootPool.builder()
+					.with(ItemEntry.builder(TbdRegisterItems.leggings))
+				tableBuilder.pool(pool)
+			}
+			if (DESERT_PYRAMID_CHEST_LOOT_TABLE_ID == id) {
+				val pool: LootPool.Builder = LootPool.builder()
+					.with(ItemEntry.builder(TbdRegisterItems.boots))
+				tableBuilder.pool(pool)
+			}
+
 		})
 
 	}
